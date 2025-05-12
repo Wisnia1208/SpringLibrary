@@ -9,12 +9,8 @@ import lombok.Setter;
 public class Publisher {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Setter
     private Long id;
 
     private String name;
-
-    // Ręcznie dodany setter dla id
-    public void setId(Long id) {
-        this.id = id;
-    }
 }

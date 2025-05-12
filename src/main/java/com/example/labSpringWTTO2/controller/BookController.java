@@ -19,6 +19,16 @@ public class BookController {
         return bookRepository.findAll();
     }
 
+    @GetMapping("/title/{title}")
+    public List<Book> getBooksByTitle(@PathVariable String title) {
+        return bookRepository.findByTitleContaining(title);
+    }
+
+    @GetMapping("/search")
+    public List<Book> searchBooks(@RequestParam String title, @RequestParam String authorName) {
+        return bookRepository.findByTitleContainingAndAuthorNameContaining(title, authorName);
+    }
+
     @GetMapping("/{id}")
     public Book getBookById(@PathVariable Long id) {
         return bookRepository.findById(id).orElseThrow();
